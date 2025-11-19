@@ -7,6 +7,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)](https://vercel.com/)
+[![Test Coverage](https://img.shields.io/badge/Coverage-100%25-brightgreen?style=flat-square&logo=vitest&logoColor=white)](https://vitest.dev/)
 
 **🌐 서비스 링크**: [malan-util.com](https://malan-util.com)
 
@@ -41,6 +42,11 @@
 - **Vercel** - CI/CD 자동화 및 서버리스 배포
 - **Git** - 버전 관리
 
+### Testing
+- **Vitest** - 빠른 단위 테스트 프레임워크
+- **Testing Library** - React 컴포넌트 테스트
+- **42개 테스트 케이스** - 핵심 계산 로직 검증
+
 ---
 
 ## 🎯 주요 기능 및 화면
@@ -50,9 +56,19 @@
 
 ---
 
+### 📱 반응형 디자인
+
+모바일, 태블릿, 데스크톱 모든 화면 크기에 최적화된 UI를 제공합니다.
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/lhg1006/portfolio-images/main/images/meu/light-mobile.png" width="250" />
+  <img src="https://raw.githubusercontent.com/lhg1006/portfolio-images/main/images/meu/light-tablet.png" width="400" />
+</div>
+
+---
+
 ### 1. 교환거래 수수료 계산기
 
-<img src="https://raw.githubusercontent.com/lhg1006/portfolio-images/main/images/meu/light-exchange1.png" width="800" />
 <img src="https://raw.githubusercontent.com/lhg1006/portfolio-images/main/images/meu/light-exchange2.png" width="800" />
 
 **기능 상세**:
@@ -86,7 +102,6 @@ const getCommissionRate = (priceNum: number, type: 'general' | 'delivery') => {
 
 ### 2. 택배거래 수수료 계산기
 
-<img src="https://raw.githubusercontent.com/lhg1006/portfolio-images/main/images/meu/light-delivery1.png" width="800" />
 <img src="https://raw.githubusercontent.com/lhg1006/portfolio-images/main/images/meu/light-delivery2.png" width="800" />
 
 **특징**:
@@ -97,7 +112,6 @@ const getCommissionRate = (priceNum: number, type: 'general' | 'delivery') => {
 
 ### 3. 월드코인 판매 계산기
 
-<img src="https://raw.githubusercontent.com/lhg1006/portfolio-images/main/images/meu/light-worldcoin1.png" width="800" />
 <img src="https://raw.githubusercontent.com/lhg1006/portfolio-images/main/images/meu/light-worldcoin2.png" width="800" />
 
 **기능 상세**:
@@ -131,7 +145,6 @@ const calculateFromCash = (cash: number) => {
 
 ### 4. 경험치 계산기
 
-<img src="https://raw.githubusercontent.com/lhg1006/portfolio-images/main/images/meu/light-exp1.png" width="800" />
 <img src="https://raw.githubusercontent.com/lhg1006/portfolio-images/main/images/meu/light-exp2.png" width="800" />
 
 **기능 상세**:
@@ -171,7 +184,6 @@ const calculateExp = () => {
 ### 5. 배 시간표
 
 <img src="https://raw.githubusercontent.com/lhg1006/portfolio-images/main/images/meu/light-ship1.png" width="800" />
-<img src="https://raw.githubusercontent.com/lhg1006/portfolio-images/main/images/meu/light-ship2.png" width="800" />
 
 **기능 상세**:
 - 게임 내 배 출발 시간표 정보 제공
@@ -185,11 +197,6 @@ const calculateExp = () => {
 앱은 다크/라이트 모드를 모두 지원하여 사용자의 선호도에 맞는 UI를 제공합니다.
 
 <img src="https://raw.githubusercontent.com/lhg1006/portfolio-images/main/images/meu/dark-main.png" width="800" />
-<img src="https://raw.githubusercontent.com/lhg1006/portfolio-images/main/images/meu/dark-exchange.png" width="800" />
-<img src="https://raw.githubusercontent.com/lhg1006/portfolio-images/main/images/meu/dark-delivery.png" width="800" />
-<img src="https://raw.githubusercontent.com/lhg1006/portfolio-images/main/images/meu/dark-worldcoin.png" width="800" />
-<img src="https://raw.githubusercontent.com/lhg1006/portfolio-images/main/images/meu/dark-exp.png" width="800" />
-<img src="https://raw.githubusercontent.com/lhg1006/portfolio-images/main/images/meu/dark-ship.png" width="800" />
 
 ---
 
@@ -296,8 +303,16 @@ maple-land-calcu/
 │   │   ├── WorldCoinCalculator.tsx      # 월드코인 계산기
 │   │   ├── MonthlyCalculator.tsx        # 월코-메소 비율 계산기
 │   │   └── ExpCalculator.tsx            # 경험치 계산기
+│   ├── utils/                  # 유틸리티 함수
+│   │   ├── commission.ts       # 수수료 계산 로직
+│   │   ├── commission.test.ts  # 수수료 계산 테스트 (21개)
+│   │   ├── worldcoin.ts        # 월드코인 계산 로직
+│   │   └── worldcoin.test.ts   # 월드코인 계산 테스트 (21개)
+│   └── test/                   # 테스트 설정
+│       └── setup.ts            # 테스트 환경 설정
 ├── public/                     # 정적 파일 (배경 이미지)
 ├── favicon/                    # 파비콘
+├── vitest.config.ts            # Vitest 설정
 ├── tailwind.config.ts          # Tailwind CSS 설정
 ├── tsconfig.json               # TypeScript 설정
 └── package.json
@@ -336,6 +351,88 @@ npm run build
 npm run start
 ```
 
+### Testing
+
+```bash
+# 테스트 실행
+npm test
+
+# UI 모드로 테스트 (상호작용)
+npm run test:ui
+
+# 커버리지 리포트 생성
+npm run test:coverage
+```
+
+---
+
+## 🧪 테스트 및 품질 관리
+
+### 테스트 커버리지
+
+**42개의 단위 테스트**로 핵심 비즈니스 로직의 정확성을 보장합니다.
+
+<img src="https://raw.githubusercontent.com/lhg1006/portfolio-images/main/images/meu/vitest-ui-dashboard.png" width="800" />
+
+#### 수수료 계산 테스트 (21개)
+```typescript
+✓ 구간별 수수료율 검증 (6단계)
+✓ 경계값 테스트 (99,999원, 100,000원 등)
+✓ 교환거래 vs 택배거래 수수료 차이
+✓ 소수점 처리 (Math.floor)
+✓ 수수료 구간 데이터 무결성
+```
+
+**테스트 예시**:
+```typescript
+it('1000만 메소 교환거래의 수수료는 400,000 메소', () => {
+  const result = calculateCommission(10000000, 'general');
+  expect(result.commission).toBe(400000); // 10,000,000 * 4.0%
+  expect(result.finalPrice).toBe(9600000);
+  expect(result.rate).toBe(4.0);
+});
+```
+
+#### 월드코인 계산 테스트 (21개)
+```typescript
+✓ 그리디 알고리즘 정확도 검증
+✓ 패키지 효율성 검증 (큰 패키지일수록 효율적)
+✓ 양방향 변환 일관성 (현금↔월드코인)
+✓ 엣지 케이스 (0원, 음수, 매우 큰 금액)
+✓ 남은 금액 처리
+```
+
+**테스트 예시**:
+```typescript
+it('99,000원으로 13,200 월드코인 구매 가능', () => {
+  const result = calculateFromCash(99000);
+  expect(result.totalWorldCoin).toBe(13200);
+  expect(result.remainingCash).toBe(0);
+  expect(result.packages).toHaveLength(1);
+});
+```
+
+<img src="https://raw.githubusercontent.com/lhg1006/portfolio-images/main/images/meu/vitest-ui-details.png" width="800" />
+
+### 테스트 전략
+
+1. **유틸리티 함수 분리**
+   - 컴포넌트에서 비즈니스 로직을 분리하여 테스트 용이성 향상
+   - `src/utils/commission.ts`, `src/utils/worldcoin.ts`
+
+2. **경계값 테스트**
+   - 각 수수료 구간의 경계값을 정확히 테스트
+   - 예: 99,999원 vs 100,000원
+
+3. **일관성 검증**
+   - 양방향 계산의 일관성 보장
+   - 예: 월드코인 → 현금 → 월드코인 변환 시 동일한 값
+
+4. **Vitest 사용**
+   - 빠른 테스트 실행 (300ms 이하)
+   - Hot Module Replacement (HMR) 지원
+   - TypeScript 네이티브 지원
+
 ---
 
 ## 🎓 프로젝트를 통해 얻은 것
@@ -345,6 +442,7 @@ npm run start
 - **TypeScript**로 복잡한 계산 로직을 타입 안전하게 관리하는 방법 습득
 - **Tailwind CSS**로 빠른 반응형 UI 구현 역량 향상
 - **Vercel**을 통한 CI/CD 자동화 및 프로덕션 배포 경험
+- **Vitest**로 단위 테스트 작성 및 테스트 주도 개발 경험
 
 ### 문제 해결 능력
 - 게임 시스템 분석 및 정확한 계산 로직 구현
